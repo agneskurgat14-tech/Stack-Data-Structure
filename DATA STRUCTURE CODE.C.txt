@@ -1,0 +1,68 @@
+#include <stdio.h>
+
+#define MAX 6
+
+int box[MAX];
+int top = -1;
+
+// 1. PUSH OPERATION (Insert an element)
+void push(int x) {
+    if (top == MAX - 1) {
+        printf("Stack is full\n");
+    } else {
+        top++;
+        box[top] = x;
+        printf("Value %d has been added\n", x);
+    }
+}
+
+// 2. POP OPERATION (Remove an element)
+int pop() {
+    if (top == -1) {
+        printf("Stack is empty\n");
+        return -1; 
+    } else {
+        int x = box[top];
+        top--;
+        printf("%d has been removed\n", x);
+        return x; 
+    }
+}
+
+// 3. TRAVERSE OPERATION (Visit and display all elements)
+void traverse() {
+    if (top == -1) {
+        printf("Stack is empty. Nothing to traverse.\n");
+        return;
+    }
+    
+    printf("\n--- Traversing Stack (Top to Bottom) ---\n");
+    for (int i = top; i >= 0; i--) {
+        printf("%d\n", box[i]);
+    }
+    printf("\n");
+}
+
+// MAIN FUNCTION TO EXECUTE EVERYTHING
+int main() {
+    printf("=== TESTING PUSH OPERATIONS ===\n");
+    push(10);
+    push(20);
+    push(30);
+    push(40);
+    push(50);
+    push(60);
+    push(70); // This will trigger "Stack is full" because MAX is 6
+
+    // Traverse to view current elements
+    traverse();
+
+    printf("=== TESTING POP OPERATIONS ===\n");
+    pop();
+    pop();
+
+    // Traverse again to see the updated stack contents
+    traverse();
+
+    return 0;
+} check that
